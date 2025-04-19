@@ -1,0 +1,28 @@
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#4f46e5',
+                    'primary-dark': '#4338ca',
+                    secondary: '#4f46e5',
+                    text: '#1f2937',
+                    'text-light': '#6b7280',
+                    'bg-light': '#f9fafb',
+                },
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                },
+                animation: {
+                    'rotate-slow': 'rotate 20s linear infinite',
+                },
+                keyframes: {
+                    rotate: {
+                        '0%': { transform: 'rotate(0deg)' },
+                        '100%': { transform: 'rotate(360deg)' },
+                    }
+                }
+            }
+        }
+    }
+</script>
