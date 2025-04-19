@@ -424,18 +424,6 @@
                 });
             });
         });
-
-        // Simple form submission
-        document.getElementById('waitlistForm')?.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-
-            // In a real app, you would send this to your backend
-            alert(`Thank you! ${email} has been added to our waitlist. We'll notify you when KONEKTIFY launches.`);
-
-            // Reset the form
-            this.reset();
-        });
     </script>
 </body>
 
