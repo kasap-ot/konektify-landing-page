@@ -10,8 +10,56 @@
                 </div>
             </a>
 
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex gap-4 md:gap-8 items-center">
+                <a href="#features" class="text-text font-medium hover:text-primary transition-colors">Features</a>
+                <a href="#app" class="text-text font-medium hover:text-primary transition-colors">App</a>
+                <a href="#join" class="text-text font-medium hover:text-primary transition-colors">Quiz</a>
+
+                <!-- Language Picker Button with Dropdown -->
+                <div class="relative">
+                    <button id="language-toggle"
+                        class="text-text font-medium hover:text-primary transition-colors flex items-center gap-1">
+                        <span class="text-sm">EN</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div id="language-dropdown"
+                        class="hidden absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+                        <button
+                            class="block w-full text-left px-4 py-2 text-sm text-text hover:bg-bg-light">English</button>
+                        <button
+                            class="block w-full text-left px-4 py-2 text-sm text-text hover:bg-bg-light">Français</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Mobile menu button -->
             <div class="md:hidden flex items-center gap-4">
+                <!-- Language Picker Button with Dropdown (Mobile) -->
+                <div class="relative">
+                    <button id="mobile-language-toggle"
+                        class="text-text font-medium hover:text-primary transition-colors flex items-center gap-1 mr-2">
+                        <span class="text-sm">EN</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div id="mobile-language-dropdown"
+                        class="hidden absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+                        <button
+                            class="block w-full text-left px-4 py-2 text-sm text-text hover:bg-bg-light">English</button>
+                        <button
+                            class="block w-full text-left px-4 py-2 text-sm text-text hover:bg-bg-light">Français</button>
+                    </div>
+                </div>
+
                 <button id="menu-btn" class="hamburger focus:outline-none">
                     <span class="hamburger-top"></span>
                     <span class="hamburger-middle"></span>
@@ -19,14 +67,10 @@
                 </button>
             </div>
 
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex gap-4 md:gap-8">
-                <a href="#features" class="text-text font-medium hover:text-primary transition-colors">Features</a>
-                <a href="#app" class="text-text font-medium hover:text-primary transition-colors">App</a>
-                <a href="#join" class="text-text font-medium hover:text-primary transition-colors">Quiz</a>
-            </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMuf7gF04F-HzMVyjD9U6NtT8v8-jSG2dbO8k5-0tVPRynXQ/viewform?usp=preview" target="_blank"
-                class="hidden md:block bg-primary text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors">Join Waitlist</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMuf7gF04F-HzMVyjD9U6NtT8v8-jSG2dbO8k5-0tVPRynXQ/viewform?usp=preview"
+                target="_blank"
+                class="hidden md:block bg-primary text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors">Join
+                Waitlist</a>
         </nav>
 
         <!-- Mobile Menu -->
@@ -38,10 +82,13 @@
                     class="text-text font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">App</a>
                 <a href="#join"
                     class="text-text font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Quiz</a>
-                <a href="#join"
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMuf7gF04F-HzMVyjD9U6NtT8v8-jSG2dbO8k5-0tVPRynXQ/viewform?usp=preview"
+                    target="_blank"
                     class="bg-primary text-white px-4 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors text-center">Join
                     Waitlist</a>
             </div>
         </div>
     </div>
 </header>
+
+{% include "languagesScript.html" %}
