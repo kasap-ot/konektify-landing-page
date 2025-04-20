@@ -1,93 +1,12 @@
 <header class="bg-white shadow-sm fixed w-full top-0 z-50">
     <div class="container mx-auto px-4 sm:px-8 max-w-6xl">
         <nav class="flex justify-between items-center py-4">
-            <a href="#start">
-                <div class="flex items-center gap-2">
-                    <div
-                        class="w-6 h-6 bg-primary text-white rounded-md flex items-center justify-center text-sm font-bold">
-                        K</div>
-                    <span class="text-xl font-bold text-primary">KONEKTIFY</span>
-                </div>
-            </a>
-
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex gap-4 md:gap-8 items-center">
-                <a href="#features" class="text-text font-medium hover:text-primary transition-colors">Features</a>
-                <a href="#app" class="text-text font-medium hover:text-primary transition-colors">App</a>
-                <a href="#join" class="text-text font-medium hover:text-primary transition-colors">Quiz</a>
-
-                <!-- Language Picker Button with Dropdown -->
-                <div class="relative">
-                    <button id="language-toggle"
-                        class="text-text font-medium hover:text-primary transition-colors flex items-center gap-1">
-                        <span class="text-sm">EN</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <!-- Dropdown Menu -->
-                    <div id="language-dropdown"
-                        class="hidden absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
-                        <button
-                            class="block w-full text-left px-4 py-2 text-sm text-text hover:bg-bg-light">English</button>
-                        <button
-                            class="block w-full text-left px-4 py-2 text-sm text-text hover:bg-bg-light">Français</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mobile menu button -->
-            <div class="md:hidden flex items-center gap-4">
-                <!-- Language Picker Button with Dropdown (Mobile) -->
-                <div class="relative">
-                    <button id="mobile-language-toggle"
-                        class="text-text font-medium hover:text-primary transition-colors flex items-center gap-1 mr-2">
-                        <span class="text-sm">EN</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-
-                    <!-- Dropdown Menu -->
-                    <div id="mobile-language-dropdown"
-                        class="hidden absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
-                        <button
-                            class="block w-full text-left px-4 py-2 text-sm text-text hover:bg-bg-light">English</button>
-                        <button
-                            class="block w-full text-left px-4 py-2 text-sm text-text hover:bg-bg-light">Français</button>
-                    </div>
-                </div>
-
-                <button id="menu-btn" class="hamburger focus:outline-none">
-                    <span class="hamburger-top"></span>
-                    <span class="hamburger-middle"></span>
-                    <span class="hamburger-bottom"></span>
-                </button>
-            </div>
-
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMuf7gF04F-HzMVyjD9U6NtT8v8-jSG2dbO8k5-0tVPRynXQ/viewform?usp=preview"
-                target="_blank"
-                class="hidden md:block bg-primary text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors">Join
-                Waitlist</a>
+            {% include "logo-button.html" %}
+            {% include "desktop-navigation.html" %}
+            {% include "mobile-navigation.html" %}
+            {% include "header-form-button.html" %}
         </nav>
-
-        <!-- Mobile Menu -->
-        <div id="menu" class="hidden md:hidden bg-white pb-4 px-4">
-            <div class="flex flex-col space-y-3">
-                <a href="#features"
-                    class="text-text font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Features</a>
-                <a href="#app"
-                    class="text-text font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">App</a>
-                <a href="#join"
-                    class="text-text font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Quiz</a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMuf7gF04F-HzMVyjD9U6NtT8v8-jSG2dbO8k5-0tVPRynXQ/viewform?usp=preview"
-                    target="_blank"
-                    class="bg-primary text-white px-4 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors text-center">Join
-                    Waitlist</a>
-            </div>
-        </div>
+        {% include "mobile-menu.html" %}
     </div>
 </header>
 

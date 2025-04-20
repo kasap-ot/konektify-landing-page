@@ -1,0 +1,27 @@
+<!-- Mobile menu button -->
+<div class="md:hidden flex items-center gap-4">
+    <!-- Language Picker Button with Dropdown (Mobile) -->
+    <div class="relative">
+        <button id="mobile-language-toggle"
+            class="text-text font-medium hover:text-primary transition-colors flex items-center gap-1 mr-2">
+            <span class="text-sm">EN</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div id="mobile-language-dropdown"
+            class="hidden absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+            <button class="block w-full text-left px-4 py-2 text-sm text-text hover:bg-bg-light">English</button>
+            <button class="block w-full text-left px-4 py-2 text-sm text-text hover:bg-bg-light">Français</button>
+        </div>
+    </div>
+
+    <button id="menu-btn" class="hamburger focus:outline-none">
+        <span class="hamburger-top"></span>
+        <span class="hamburger-middle"></span>
+        <span class="hamburger-bottom"></span>
+    </button>
+</div>
