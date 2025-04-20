@@ -7,60 +7,12 @@
                 destination for event enthusiasts</p>
         </div>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 md:gap-8">
-            <div class="bg-bg-light p-6 md:p-8 rounded-2xl shadow-md hover:-translate-y-2 transition-transform">
-                <div
-                    class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
-                    🔍</div>
-                <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Discover Events</h3>
-                <p class="text-text-light text-sm md:text-base">Find events based on your interests, location, and
-                    availability. Our
-                    smart filters help you discover experiences that match your preferences.</p>
-            </div>
-            <div class="bg-bg-light p-6 md:p-8 rounded-2xl shadow-md hover:-translate-y-2 transition-transform">
-                <div
-                    class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
-                    📱</div>
-                <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Post in Seconds</h3>
-                <p class="text-text-light text-sm md:text-base">Creating and posting events is quick and easy. Share
-                    all the details with
-                    potential attendees in just a few taps.</p>
-            </div>
-            <div class="bg-bg-light p-6 md:p-8 rounded-2xl shadow-md hover:-translate-y-2 transition-transform">
-                <div
-                    class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
-                    👥</div>
-                <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Connect with Others</h3>
-                <p class="text-text-light text-sm md:text-base">Meet people who share your interests. Chat, RSVP,
-                    and build your network
-                    through events you're passionate about.</p>
-            </div>
-            <div class="bg-bg-light p-6 md:p-8 rounded-2xl shadow-md hover:-translate-y-2 transition-transform">
-                <div
-                    class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
-                    🗓️</div>
-                <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Personal Calendar</h3>
-                <p class="text-text-light text-sm md:text-base">Keep track of all your upcoming events in one place.
-                    Get reminders and
-                    never miss an event again.</p>
-            </div>
-            <div class="bg-bg-light p-6 md:p-8 rounded-2xl shadow-md hover:-translate-y-2 transition-transform">
-                <div
-                    class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
-                    📍</div>
-                <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Location Based</h3>
-                <p class="text-text-light text-sm md:text-base">Find events nearby or explore what's happening in
-                    other areas when you
-                    travel or plan to visit.</p>
-            </div>
-            <div class="bg-bg-light p-6 md:p-8 rounded-2xl shadow-md hover:-translate-y-2 transition-transform">
-                <div
-                    class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
-                    💬</div>
-                <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Event Chat</h3>
-                <p class="text-text-light text-sm md:text-base">Communicate with organizers and other attendees
-                    before, during, and after
-                    events to enhance your experience.</p>
-            </div>
+            {% include "feature-cards/discover-events.html" %}
+            {% include "feature-cards/post-in-seconds.html" %}
+            {% include "feature-cards/connect-with-others.html" %}
+            {% include "feature-cards/personal-calendar.html" %}
+            {% include "feature-cards/location-based.html" %}
+            {% include "feature-cards/event-chat.html" %}
         </div>
     </div>
 </section>
