@@ -1,0 +1,13 @@
+<header class="bg-white shadow-sm fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-8 max-w-6xl">
+        <nav class="flex justify-between items-center py-4">
+            {% include "header/logo-button.html" %}
+            {% include "header/desktop-navigation.html" %}
+            {% include "header/mobile-navigation.html" %}
+            {% include "header/header-form-button.html" %}
+        </nav>
+        {% include "header/mobile-menu.html" %}
+    </div>
+</header>
+
+{% include "header/languages-script.html" %}
