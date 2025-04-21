@@ -1,60 +1,37 @@
 <script>
-    // Function to update the page content based on selected language
     function updatePageLanguage(lang) {
-        // Set the HTML document's language attribute
         document.documentElement.lang = lang;
-
-        // Find all elements that need translation (marked with data-translate attribute)
         const elements = document.querySelectorAll('[data-translate]');
-
-        // Loop through each element that needs translation
         elements.forEach(el => {
-            // Get the translation key from the element's data-translate attribute
             const key = el.getAttribute('data-translate');
-
-            // Check if translation exists for this language and key
             if (translations[lang] && translations[lang][key]) {
-                // Update the element's text with the translation
                 el.textContent = translations[lang][key];
             }
         });
     }
 
-    // Function to set up the language dropdown functionality
     function setupLanguageDropdown(toggleId, dropdownId) {
-        // Get the toggle button and dropdown elements by their IDs
         const toggle = document.getElementById(toggleId);
         const dropdown = document.getElementById(dropdownId);
 
-        // Exit if elements aren't found
         if (!toggle || !dropdown) return;
 
-        // Add click event to toggle button
         toggle.addEventListener('click', (e) => {
-            // Prevent this click from bubbling up to document
             e.stopPropagation();
-            // Toggle the dropdown visibility (show/hide)
             dropdown.classList.toggle('hidden');
         });
 
-        // Add click event to the whole document
         document.addEventListener('click', (e) => {
-            // If click is outside dropdown and toggle button, hide dropdown
             if (!dropdown.contains(e.target) && !toggle.contains(e.target)) {
                 dropdown.classList.add('hidden');
             }
         });
 
-        // Add click events to all buttons inside the dropdown
         dropdown.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', () => {
-                // Determine language code based on button text
                 const lang = button.textContent === 'English' ? 'en' : 'mk';
-                // Hide the dropdown after selection
                 dropdown.classList.add('hidden');
-                // Update page content to selected language
                 updatePageLanguage(lang);
-                // Find the span inside toggle button to update displayed language code
                 const toggleText = toggle.querySelector('span');
                 if (toggleText)
                     toggleText.textContent = lang.toUpperCase();
@@ -62,7 +39,6 @@
         });
     }
 
-    // Initialize language dropdowns for desktop and mobile
     setupLanguageDropdown('language-toggle', 'language-dropdown');
     setupLanguageDropdown('mobile-language-toggle', 'mobile-language-dropdown');
 </script>
