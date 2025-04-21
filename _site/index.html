@@ -92,9 +92,9 @@
 </a>
             <!-- Desktop Navigation -->
 <div class="hidden md:flex gap-4 md:gap-8 items-center">
-    <a href="#features" class="text-text font-medium hover:text-primary transition-colors">Features</a>
-    <a href="#app" class="text-text font-medium hover:text-primary transition-colors">App</a>
-    <a href="#join" class="text-text font-medium hover:text-primary transition-colors">Quiz</a>
+    <a href="#features" class="text-text font-medium hover:text-primary transition-colors" data-translate="headerFeatures">Features</a>
+    <a href="#app" class="text-text font-medium hover:text-primary transition-colors" data-translate="headerApp">App</a>
+    <a href="#join" class="text-text font-medium hover:text-primary transition-colors" data-translate="headerQuiz">Quiz</a>
 
     <!-- Language Picker Button with Dropdown -->
     <div class="relative">
@@ -143,21 +143,21 @@
 </div>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMuf7gF04F-HzMVyjD9U6NtT8v8-jSG2dbO8k5-0tVPRynXQ/viewform?usp=preview"
     target="_blank"
-    class="hidden md:block bg-primary text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors">Join
+    class="hidden md:block bg-primary text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors" data-translate="headerJoinButton">Join
     Waitlist</a>
         </nav>
         <!-- Mobile Menu -->
 <div id="menu" class="hidden md:hidden bg-white pb-4 px-4">
     <div class="flex flex-col space-y-3">
         <a href="#features"
-            class="text-text font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Features</a>
+            class="text-text font-medium hover:text-primary transition-colors py-2 border-b border-gray-100" data-translate="headerFeatures">Features</a>
         <a href="#app"
-            class="text-text font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">App</a>
+            class="text-text font-medium hover:text-primary transition-colors py-2 border-b border-gray-100" data-translate="headerApp">App</a>
         <a href="#join"
-            class="text-text font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Quiz</a>
+            class="text-text font-medium hover:text-primary transition-colors py-2 border-b border-gray-100" data-translate="headerQuiz">Quiz</a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMuf7gF04F-HzMVyjD9U6NtT8v8-jSG2dbO8k5-0tVPRynXQ/viewform?usp=preview"
             target="_blank"
-            class="bg-primary text-white px-4 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors text-center">Join
+            class="bg-primary text-white px-4 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors text-center" data-translate="headerJoinButton">Join
             Waitlist</a>
     </div>
 </div>
@@ -165,53 +165,90 @@
 </header>
 
 <script>
+    // Function to update the page content based on selected language
+    function updatePageLanguage(lang) {
+        // Set the HTML document's language attribute
+        document.documentElement.lang = lang;
+
+        // Find all elements that need translation (marked with data-translate attribute)
+        const elements = document.querySelectorAll('[data-translate]');
+
+        // Loop through each element that needs translation
+        elements.forEach(el => {
+            // Get the translation key from the element's data-translate attribute
+            const key = el.getAttribute('data-translate');
+
+            // Check if translation exists for this language and key
+            if (translations[lang] && translations[lang][key]) {
+                // Update the element's text with the translation
+                el.textContent = translations[lang][key];
+            }
+        });
+    }
+
+    // Function to set up the language dropdown functionality
     function setupLanguageDropdown(toggleId, dropdownId) {
+        // Get the toggle button and dropdown elements by their IDs
         const toggle = document.getElementById(toggleId);
         const dropdown = document.getElementById(dropdownId);
 
+        // Exit if elements aren't found
         if (!toggle || !dropdown) return;
 
+        // Add click event to toggle button
         toggle.addEventListener('click', (e) => {
+            // Prevent this click from bubbling up to document
             e.stopPropagation();
+            // Toggle the dropdown visibility (show/hide)
             dropdown.classList.toggle('hidden');
         });
 
+        // Add click event to the whole document
         document.addEventListener('click', (e) => {
+            // If click is outside dropdown and toggle button, hide dropdown
             if (!dropdown.contains(e.target) && !toggle.contains(e.target)) {
                 dropdown.classList.add('hidden');
             }
         });
 
+        // Add click events to all buttons inside the dropdown
         dropdown.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', () => {
+                // Determine language code based on button text
+                const lang = button.textContent === 'English' ? 'en' : 'mk';
+                // Hide the dropdown after selection
                 dropdown.classList.add('hidden');
-                console.log('Language selected:', button.textContent);
-                // Add language change logic here
+                // Update page content to selected language
+                updatePageLanguage(lang);
+                // Find the span inside toggle button to update displayed language code
+                const toggleText = toggle.querySelector('span');
+                if (toggleText)
+                    toggleText.textContent = lang.toUpperCase();
             });
         });
     }
 
+    // Initialize language dropdowns for desktop and mobile
     setupLanguageDropdown('language-toggle', 'language-dropdown');
     setupLanguageDropdown('mobile-language-toggle', 'mobile-language-dropdown');
 </script>
-
     <section class="mt-12 md:mt-16 py-8 md:py-20 relative overflow-hidden" id="start">
     <div class="container mx-auto px-4 sm:px-8 max-w-6xl">
         <div class="flex flex-col md:flex-row items-center">
             <!-- Text Content (Left Side) -->
             <div class="w-full md:w-1/2 z-10 md:pr-8 order-2 md:order-1">
-                <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4">Discover amazing events happening
+                <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4" data-translate="headline">Discover amazing events happening
                     around you</h1>
-                <p class="text-lg md:text-xl text-text-light mb-6">From parties to workshops, sports to book clubs -
+                <p class="text-lg md:text-xl text-text-light mb-6" data-translate="subHeadline">From parties to workshops, sports to book clubs -
                     find and
                     share local events that match your interests.</p>
                 <div class="flex flex-col sm:flex-row gap-3">
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMuf7gF04F-HzMVyjD9U6NtT8v8-jSG2dbO8k5-0tVPRynXQ/viewform?usp=preview"
                         target="_blank"
-                        class="bg-primary text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors text-center">Join
+                        class="bg-primary text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors text-center" data-translate="joinButton">Join
                         Waitlist</a>
                     <a href="#features"
-                        class="border-2 border-primary text-primary px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors text-center">Learn
+                        class="border-2 border-primary text-primary px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors text-center" data-translate="learnMoreButton">Learn
                         More</a>
                 </div>
             </div>
@@ -278,8 +315,10 @@
     <section class="py-12 md:py-20 bg-white" id="features">
     <div class="container mx-auto px-4 sm:px-8 max-w-6xl">
         <div class="text-center mb-8 md:mb-12">
-            <h2 class="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Why You'll Love KONEKTIFY</h2>
-            <p class="text-lg md:text-xl text-text-light max-w-2xl mx-auto">Discover what makes our platform the
+            <h2 class="text-2xl md:text-4xl font-bold mb-3 md:mb-4" data-translate="featuresTitle">Why You'll Love
+                KONEKTIFY</h2>
+            <p class="text-lg md:text-xl text-text-light max-w-2xl mx-auto" data-translate="featuresSubtitle">Discover
+                what makes our platform the
                 ultimate
                 destination for event enthusiasts</p>
         </div>
@@ -288,7 +327,7 @@
     <div
         class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
         🔍</div>
-    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Discover Events</h3>
+    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4" data-translate="feature1Title">Discover Events</h3>
     <p class="text-text-light text-sm md:text-base">Find events based on your interests, location, and
         availability. Our
         smart filters help you discover experiences that match your preferences.</p>
@@ -297,7 +336,7 @@
     <div
         class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
         📱</div>
-    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Post in Seconds</h3>
+    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4" data-translate="feature2Title">Post in Seconds</h3>
     <p class="text-text-light text-sm md:text-base">Creating and posting events is quick and easy. Share
         all the details with
         potential attendees in just a few taps.</p>
@@ -306,7 +345,7 @@
     <div
         class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
         👥</div>
-    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Connect with Others</h3>
+    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4" data-translate="feature3Title">Connect with Others</h3>
     <p class="text-text-light text-sm md:text-base">Meet people who share your interests. Chat, RSVP,
         and build your network
         through events you're passionate about.</p>
@@ -315,7 +354,7 @@
     <div
         class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
         🗓️</div>
-    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Personal Calendar</h3>
+    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4" data-translate="feature4Title">Personal Calendar</h3>
     <p class="text-text-light text-sm md:text-base">Keep track of all your upcoming events in one place.
         Get reminders and
         never miss an event again.</p>
@@ -324,7 +363,7 @@
     <div
         class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
         📍</div>
-    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Location Based</h3>
+    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4" data-translate="feature5Title">Location Based</h3>
     <p class="text-text-light text-sm md:text-base">Find events nearby or explore what's happening in
         other areas when you
         travel or plan to visit.</p>
@@ -333,7 +372,7 @@
     <div
         class="w-10 h-10 md:w-12 md:h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl md:text-2xl mb-4 md:mb-6">
         💬</div>
-    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Event Chat</h3>
+    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4" data-translate="feature6Title">Event Chat</h3>
     <p class="text-text-light text-sm md:text-base">Communicate with organizers and other attendees
         before, during, and after
         events to enhance your experience.</p>
@@ -344,8 +383,8 @@
     <section class="py-12 md:py-20" id="app">
     <div class="container mx-auto px-4 sm:px-8 max-w-6xl">
         <div class="text-center mb-8 md:mb-12">
-            <h2 class="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Experience the Future of Event Discovery</h2>
-            <p class="text-lg md:text-xl text-text-light max-w-2xl mx-auto">
+            <h2 class="text-2xl md:text-4xl font-bold mb-3 md:mb-4" data-translate="interfacesTitle">Experience the Future of Event Discovery</h2>
+            <p class="text-lg md:text-xl text-text-light max-w-2xl mx-auto" data-translate="interfacesSubtitle">
                 Our intuitive interface makes finding and posting events easier than ever before
             </p>
         </div>
@@ -555,13 +594,13 @@
 </section>
     <section class="py-12 md:py-20 bg-bg-light text-center" id="join">
     <div class="container mx-auto px-4 sm:px-8 max-w-6xl">
-        <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Be Among the First to Experience KONEKTIFY</h2>
-        <p class="text-lg md:text-xl text-text-light max-w-2xl mx-auto mb-6 md:mb-10">Join our waitlist today and
+        <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6" data-translate="joinTitle">Be Among the First to Experience KONEKTIFY</h2>
+        <p class="text-lg md:text-xl text-text-light max-w-2xl mx-auto mb-6 md:mb-10" data-translate="joinSubtitle">Join our waitlist today and
             get early access to
             the platform that's revolutionizing how people discover and share events.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMuf7gF04F-HzMVyjD9U6NtT8v8-jSG2dbO8k5-0tVPRynXQ/viewform?usp=preview"
             target="_blank"
-            class="inline-block w-full sm:w-auto bg-primary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-primary-dark transition-colors text-base md:text-lg">
+            class="inline-block w-full sm:w-auto bg-primary text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-primary-dark transition-colors text-base md:text-lg" data-translate="finalButton">
             Answer the mini-quiz and join the waitlist!
         </a>
     </div>
@@ -657,6 +696,95 @@
             });
         });
     });
+</script>
+    <script>
+    const translations = {
+        en: {
+            headerFeatures: "Features",
+            headerApp: "App",
+            headerQuiz: "Quiz",
+            headerJoinButton: "Join Waitlist",
+
+            headline: "Discover amazing events happening around you",
+            subHeadline: "From parties to workshops, sports to book clubs - find and share local events that match your interests.",
+            joinButton: "Join Waitlist",
+            learnMoreButton: "Learn More",
+            
+            featuresTitle: "Why You'll Love KONEKTIFY",
+            featuresSubtitle: "Discover what makes our platform the ultimate destination for event enthusiasts",
+            
+            feature1Title: "Discover Events",
+            feature2Title: "Post in Seconds",
+            feature3Title: "Connect with Others",
+            feature4Title: "Personal Calendar",
+            feature5Title: "Location Based",
+            feature6Title: "Event Chat",
+            
+            feature1Subtitle: "Find events based on your interests, location, and availability. Our smart filters help you discover experiences that match your preferences.",
+            feature2Subtitle: "Creating and posting events is quick and easy. Share all the details with potential attendees in just a few taps.",
+            feature3Subtitle: "Meet people who share your interests. Chat, RSVP, and build your network through events you're passionate about.",
+            feature4Subtitle: "Keep track of all your upcoming events in one place. Get reminders and never miss an event again.",
+            feature5Subtitle: "Find events nearby or explore what's happening in other areas when you travel or plan to visit.",
+            feature6Subtitle: "Communicate with organizers and other attendees before, during, and after events to enhance your experience.",
+
+            interfacesTitle: "Experience the Future of Event Discovery",
+            interfacesSubtitle: "Our intuitive interface makes finding and posting events easier than ever before",
+            
+            // TODO - add interface texts
+            // ...
+
+            joinTitle: "Be Among the First to Experience KONEKTIFY",
+            joinSubtitle: "Join our waitlist today and get early access to the platform that's revolutionizing how people discover and share events.",
+            finalButton: "Answer the mini-quiz and join the waitlist!",
+
+
+        },
+        mk: {
+            // Header
+            headerFeatures: "Добивки",
+            headerApp: "Изглед",
+            headerQuiz: "Квиз",
+            headerJoinButton: "Резервирај место",
+
+            // Hero section
+            headline: "Дознај за неверојатни настани околу тебе",
+            subHeadline: "Од забави до работилници, спортови до клубови за читање, најди и сподели локални настани во склад со твоите интереси.",
+            joinButton: "Резервирај место",
+            learnMoreButton: "Дознај повеќе",
+            
+            // Features section
+            featuresTitle: "Зошто ќе Уживаш во KONEKTIFY",
+            featuresSubtitle: "Откриј што ја прави нашата платформа идеална за ентузијасти за настани",
+            
+            // Feature titles
+            feature1Title: "Откриј Настани",
+            feature2Title: "Постирај Брзо",
+            feature3Title: "Поврзи Се",
+            feature4Title: "Личен Kалендар",
+            feature5Title: "Локациски Базиран",
+            feature6Title: "Разговори за Настаните",
+            
+            // Feature subtitles
+            feature1Subtitle: "...",
+            feature2Subtitle: "...",
+            feature3Subtitle: "...",
+            feature4Subtitle: "...",
+            feature5Subtitle: "...",
+            feature6Subtitle: "...",
+
+            // Interfaces section
+            interfacesTitle: "Искуси ја Иднината на Откривање Настани",
+            interfacesSubtitle: "Нашиот интуитивен интерфејс го прави откривањето и постирањето на настани полесно од било кога",
+            
+            // TODO - add interface texts
+            // ...
+
+            // Join section
+            joinTitle: "Биди меѓу првите што ќе го искусат KONEKTIFY",
+            joinSubtitle: "Приклучи се на waitlist-от и добиј ран пристап до нашата платформа.",
+            finalButton: "Реши го мини-квизот и резервирај место!",
+        },
+    }
 </script>
 </body>
 
